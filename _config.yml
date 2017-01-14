@@ -1,9 +1,9 @@
 # Welcome to Jekyll!
 
 # Website settings
-title: "Remi Marenco"
-description: "Remi Marenco: From Software Engineering passion to Computational Biology revolution"
-keywords: "Remi, Marenco, Remi Marenco, Jekyll, Computational Biology, Galaxy Project, Bioinformatics"
+title: "Ashish Kumar"
+description: "Ashish Kumar: From Software Engineering passion to Computational Biology revolution"
+keywords: "Ashish Kumar, Ashish, Yahoo, DevOPS, Operations Engineer, Production Engineer, Linux, Unix"
 
 baseurl: "/"
 url: "ashishk.github.io"
@@ -11,23 +11,23 @@ url: "ashishk.github.io"
 
 # author
 author:
-  name: 'Remi Marenco'
-  first_name: 'Remi'
-  last_name: 'Marenco'
-  email: 'remi.marenco@gmail.com'
-  facebook_username: 'remi.marenco'
-  linkedin_username: 'remimarenco'
-  github_username: 'remimarenco'
+  name: 'Ashish Kumar'
+  first_name: 'Ashish'
+  last_name: 'Kumar'
+  email: 'ashishkj@outlook.in'
+  facebook_username: 'ashishkrj'
+  linkedin_username: 'ashishkrj'
+  github_username: 'ashishkrj'
   head_img: 'static/img/landing/remi_marenco.jpg'
 
 # social link
-nikki_phoolchund:
-  first_name: 'Nikki'
-  last_name: 'Phoolchund'
-  description: "One's destination is never a place but rather a new way of looking at things"
-  linkedin: 'https://www.linkedin.com/in/nikki-phoolchund-88a6a760/'
-  email: 'npslp2.cam@gmail.com'
-  head_img: 'static/img/landing/nikki_phoolchund.jpg'
+#nikki_phoolchund:
+#  first_name: 'Nikki'
+#  last_name: 'Phoolchund'
+#  description: "One's destination is never a place but rather a new way of looking at things"
+#  linkedin: 'https://www.linkedin.com/in/nikki-phoolchund-88a6a760/'
+#  email: 'npslp2.cam@gmail.com'
+#  head_img: 'static/img/landing/nikki_phoolchund.jpg'
 
 # landing page
 landing:
