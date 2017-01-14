@@ -1,0 +1,112 @@
+# Welcome to Jekyll!
+
+# Website settings
+title: "Remi Marenco"
+description: "Remi Marenco: From Software Engineering passion to Computational Biology revolution"
+keywords: "Remi, Marenco, Remi Marenco, Jekyll, Computational Biology, Galaxy Project, Bioinformatics"
+
+baseurl: "/"
+url: "http://www.marenco.remionramp.com"
+# url: "http://127.0.0.1:4000"
+
+# author
+author:
+  name: 'Remi Marenco'
+  first_name: 'Remi'
+  last_name: 'Marenco'
+  email: 'remi.marenco@gmail.com'
+  facebook_username: 'remi.marenco'
+  linkedin_username: 'remimarenco'
+  github_username: 'remimarenco'
+  head_img: 'static/img/landing/remi_marenco.jpg'
+
+# social link
+nikki_phoolchund:
+  first_name: 'Nikki'
+  last_name: 'Phoolchund'
+  description: "One's destination is never a place but rather a new way of looking at things"
+  linkedin: 'https://www.linkedin.com/in/nikki-phoolchund-88a6a760/'
+  email: 'npslp2.cam@gmail.com'
+  head_img: 'static/img/landing/nikki_phoolchund.jpg'
+
+# landing page
+landing:
+  - title: "Home"
+    id: 'home'
+  - title: "About"
+    id: 'about'
+  - title: "Career"
+    id: 'career'
+  - title: 'Skills'
+    id: 'skills'
+  - title: 'Projects'
+    id: 'projects'
+  - title: 'Links'
+    id: 'links'
+  - tile: 'Resume'
+    id: 'resume'
+
+# my projects
+project:
+  gonramp:
+    name: 'G-OnRamp'
+    url: 'https://galaxy.colonialone.gwu.edu/gonramp'
+    github: 'https://github.com/remimarenco/gonramp'
+    img: 'static/img/projects/galaxy_project.png'
+  jscoverageqc:
+    name: 'JsCoverageQC'
+    url: 'https://github.com/remimarenco/JsCoverageQC'
+    github: 'https://github.com/remimarenco/JsCoverageQC'
+    img: 'static/img/projects/jscoverageqc.jpg'
+  pousse_de_bambin:
+    name: 'Pousse De Bambin'
+    url: 'http://poussedebambin.azurewebsites.net/'
+    github: 'https://github.com/remimarenco/PousseDeBambin'
+    img: 'static/img/projects/pousse_de_bambin_logo.png'
+
+# blog index
+index:
+  home: 'Home'
+  python: 'Python'
+  linux: 'Linux'
+  html: 'HTML'
+  database: 'Database'
+  mac: 'Mac'
+  life: 'Life'
+
+# donate
+donate:
+  wechat: 'static/img/pay/wechat.png'
+  alipay: 'static/img/pay/alipay.png'
+
+# comment
+changyan:
+  # appid: cysfY7ULn
+  # conf: prod_861928934cecb7a18e15bedaed9dae29
+disqus:
+  name: jalpc
+  public_key: tj2MPaNlHMONwTH5bGDNSXyaBpW7q282MeUzh5CwcjJerNhK8Kxk3aWo7IckzTX7
+
+# share
+bshare:
+  uuid: 513f778e-a8f7-4c20-9ec2-d29cc2328d75
+
+# baidu analytics
+ba:
+  uuid: 317acca9ef9255b934e46371e471431d
+
+# google analytics
+ga:
+  id: UA-73784599-1
+
+# blog img path
+img_path: '/static/img/blog'
+
+# Build settings
+encoding: "utf-8"
+
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge

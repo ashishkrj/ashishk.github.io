@@ -1,0 +1,662 @@
+---
+layout: blog
+title: index
+permalink: /
+---
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#{{ site.landing.id | first }}" id="i18_title"><span
+                        data-i18n="website.title">{{ site.title }}</span></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" id="i18_navbar">
+                    {% for anc in site.landing %}
+                        <li>
+                            {% if anc.id == 'resume' %}
+                                <a href="http://resume.remionramp.com" target="_blank">
+                                    <span data-i18n="nav.{{ anc.id }}">{{ anc.title }}</span>
+                                </a>
+                            {% else %}
+                                <a class="page-scroll" href="#{{ anc.id }}">
+                                    <span data-i18n="nav.{{ anc.id }}">{{ anc.title }}</span>
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+
+                    <!--<li><a class="page-scroll" href="#hobbies"><span data-i18n="nav.interests">{{ site.landing.hobbies }}</span></a>-->
+                    <!--</li>-->
+
+                    <!-- Change language -->
+                    <li>
+                        <a class="btn btn-sm set_en">
+                            <img src="{{ 'static/img/flags/United-States.png' | prepend: site.baseurl }}"
+                                height="16px" width="16px">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-sm set_fr">
+                            <img src="{{ 'static/img/flags/France.png' | prepend: site.baseurl }}"
+                                height="16px" width="16px">
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <!-- TODO: Only parse once, store in a variable the images -->
+    <ol class="carousel-indicators">
+        {% assign counter = 0 %}
+        {% for carousel_image in site.static_files %}
+        {% if carousel_image.path contains 'img/carousel' %}
+        <li data-target="#inSlider"
+            data-slide-to="{{ counter }}"
+            {% if counter == 0 %}
+            class="active"
+            {% endif %}
+        ></li>
+        {% assign counter = counter | plus: 1 %}
+        {% endif %}
+        {% endfor %}
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        {% assign first_ok = false %}
+        {% for carousel_image in site.static_files %}
+        {% if carousel_image.path contains 'img/carousel' %}
+        {% if first_ok == false %}
+        <div class="item active">
+            {% assign first_ok = true %}
+            {% else %}
+            <div class="item">
+                {% endif %}
+                <div class="container">
+                    {% if first_ok == false %}
+                    <div class="carousel-caption">
+                    </div>
+                    {% else %}
+                    <div class="carousel-caption blank">
+                    </div>
+                    {% endif %}
+                    <div class="carousel-image wow zoomIn">
+                    </div>
+                </div>
+                <!-- Set background for slide in css -->
+                <div class="header-back"
+                     style="background-image: url({{ carousel_image.path }})">
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <section id="about" class="features">
+        <div class="container" id="i18_about_me">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1><span data-i18n="about_me.about_me">About Me</span></h1>
+                    <!-- <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p> -->
+                </div>
+            </div>
+            <div class="row">
+                <!-- python -->
+                <div class="col-sm-2 wow fadeInLeft">
+                    <div class="team-member">
+                        <div class="vote-icon">
+                            <i class="icon-python"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- linux -->
+                <div class="col-sm-2 wow fadeInLeft">
+                    <div class="team-member">
+                        <div class="vote-icon">
+                            <i class="icon-javascript"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- avatar -->
+                <div class="col-sm-4">
+                    <div class="team-member wow zoomIn">
+                        <img src="{{ site.author.head_img | prepend: site.baseurl }}" height="110" width="110"
+                             class="img-responsive img-circle" alt="">
+                        <h4><span class="navy">{{ site.author.last_name }}</span> {{ site.author.first_name }}</h4>
+                        <ul class="list-inline social-icon">
+                            <li><a href="https://github.com/{{ site.author.github_username }}" target="blank"><i
+                                    class="fa fa-github"></i></a>
+                            </li>
+                            <li><a href="mailto:{{ site.author.email }}"><i class="fa fa-envelope-o"></i></a>
+                            </li>
+                            <li><a href="https://linkedin.com/in/{{ site.author.linkedin_username }}" target="blank"><i
+                                    class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- html -->
+                <div class="col-sm-2 wow fadeInRight">
+                    <div class="team-member">
+                        <div class="vote-icon">
+                            <i class="fa fa-html5"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- docker -->
+                <div class="col-sm-2 wow fadeInRight">
+                    <div class="team-member">
+                        <div class="vote-icon">
+                            <i class="icon-csharp"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                    <p><span data-i18n="about_me.des">
+                    I am a Python engineer with website development, automation Ops and writing scripts experience. Life is a continuous learning process, so work makes me more rigorous, travel makes my life more colorful. I can make lots of friends when I coding and travel.
+                </span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="career" class="timeline features gray-section">
+        <div class="container" id="i18_career">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1><span data-i18n="career.my_career">My Career</span></h1>
+                </div>
+            </div>
+            <div class="row features-block">
+
+                <div class="col-lg-12">
+                    <div id="vertical-timeline" class="vertical-container light-timeline center-orientation">
+                        <!-- nextcode -->
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-refresh"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <h2><span data-i18n="career.cbi.name"></span></h2>
+                                <p><span data-i18n="career.cbi.description"></span>
+                                </p>
+                                <span class="vertical-date"><span
+                                        data-i18n="career.cbi.date"> </span><br/> <small><span
+                                        data-i18n="career.cbi.position"></span></small> </span>
+                            </div>
+                        </div>
+                        <!-- netease game -->
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-medkit"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <h2><span data-i18n="career.cruk.name">Netease Game</span></h2>
+                                <p><span data-i18n="career.cruk.description">In Netease game, I learned game service system and use Python code for ops. </span>
+                                </p>
+                                <span class="vertical-date"><span
+                                        data-i18n="career.cruk.date"> Jun. 2015 </span><br/> <small><span
+                                        data-i18n="career.cruk.position">Dev Ops</span></small> </span>
+                            </div>
+                        </div>
+                        <!-- netease game -->
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-user-plus"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <h2><span data-i18n="career.freelance.name">Netease Game</span></h2>
+                                <p><span data-i18n="career.freelance.description">In Netease game, I learned game service system and use Python code for ops. </span>
+                                </p>
+                                <span class="vertical-date"><span
+                                        data-i18n="career.freelance.date"> Jun. 2015 </span><br/> <small><span
+                                        data-i18n="career.freelance.position">Dev Ops</span></small> </span>
+                            </div>
+                        </div>
+                        <!-- netease game -->
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-h-square"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <h2><span data-i18n="career.hospitals_lyon.name">Netease Game</span></h2>
+                                <p><span data-i18n="career.hospitals_lyon.description">In Netease game, I learned game service system and use Python code for ops. </span>
+                                </p>
+                                <span class="vertical-date"><span
+                                        data-i18n="career.hospitals_lyon.date"> Jun. 2015 </span><br/> <small><span
+                                        data-i18n="career.hospitals_lyon.position">Dev Ops</span></small> </span>
+                            </div>
+                        </div>
+                        <!-- netease game -->
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-fort-awesome"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <h2><span data-i18n="career.pousse_de_bambin.name">Netease Game</span></h2>
+                                <p><span data-i18n="career.pousse_de_bambin.description">In Netease game, I learned game service system and use Python code for ops. </span>
+                                </p>
+                                <span class="vertical-date"><span
+                                        data-i18n="career.pousse_de_bambin.date"> Jun. 2015 </span><br/> <small><span
+                                        data-i18n="career.pousse_de_bambin.position">Dev Ops</span></small> </span>
+                            </div>
+                        </div>
+                        <!-- netease game -->
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <h2><span data-i18n="career.graduation_engineer.name">Netease Game</span></h2>
+                                <p><span data-i18n="career.graduation_engineer.description">In Netease game, I learned game service system and use Python code for ops. </span>
+                                </p>
+                                <span class="vertical-date"><span
+                                        data-i18n="career.graduation_engineer.date"> Jun. 2015 </span><br/> <small><span
+                                        data-i18n="career.graduation_engineer.position">Dev Ops</span></small> </span>
+                            </div>
+                        </div>
+                        <!-- netease game -->
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <h2><span data-i18n="career.galaxy_intern.name">Netease Game</span></h2>
+                                <p><span data-i18n="career.galaxy_intern.description">In Netease game, I learned game service system and use Python code for ops. </span>
+                                </p>
+                                <span class="vertical-date"><span
+                                        data-i18n="career.galaxy_intern.date"> Jun. 2015 </span><br/> <small><span
+                                        data-i18n="career.galaxy_intern.position">Dev Ops</span></small> </span>
+                            </div>
+                        </div>
+                        <!-- netease game -->
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <h2><span data-i18n="career.graduation_bachelor.name">Netease Game</span></h2>
+                                <p><span data-i18n="career.graduation_bachelor.description">In Netease game, I learned game service system and use Python code for ops. </span>
+                                </p>
+                                <span class="vertical-date"><span
+                                        data-i18n="career.graduation_bachelor.date"></span><br/> <small><span
+                                        data-i18n="career.graduation_bachelor.position"></span></small> </span>
+                            </div>
+                        </div>
+                        <!-- netease game -->
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <div class="vertical-timeline-content">
+                                <h2><span data-i18n="career.graduation_dut.name">Netease Game</span></h2>
+                                <p><span data-i18n="career.graduation_dut.description">In Netease game, I learned game service system and use Python code for ops. </span>
+                                </p>
+                                <span class="vertical-date"><span
+                                        data-i18n="career.graduation_dut.date"> Jun. 2015 </span><br/> <small><span
+                                        data-i18n="career.graduation_dut.position">Dev Ops</span></small> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section id="skills" class="team features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center" id="i18_skills">
+                    <div class="navy-line"></div>
+                    <h1><span data-i18n="skills.my_skills">My Skills</span></h1>
+                </div>
+            </div>
+            <div class="row features-block">
+                <div class="row">
+                    <div class="col-lg-1 col-lg-offset-2 features-text wow fadeInLeft">
+                        <p>HTML5</p>
+                    </div>
+                    <div class="col-lg-7 features-text wow fadeInLeft">
+                        <div class="progress progress-bar-default">
+                            <div style="width: 85%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="85"
+                                 role="progressbar" class="progress-bar">
+                                <span class="sr-only">85% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 col-lg-offset-2 features-text wow fadeInLeft">
+                        <p>Python</p>
+                    </div>
+                    <div class="col-lg-7 features-text wow fadeInLeft">
+                        <div class="progress progress-bar-default">
+                            <div style="width: 80%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80"
+                                 role="progressbar" class="progress-bar">
+                                <span class="sr-only">80% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 col-lg-offset-2 features-text wow fadeInLeft">
+                        <p>Javascript</p>
+                    </div>
+                    <div class="col-lg-7 features-text wow fadeInLeft">
+                        <div class="progress progress-bar-default">
+                            <div style="width: 75%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="75"
+                                 role="progressbar" class="progress-bar">
+                                <span class="sr-only">75% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 col-lg-offset-2 features-text wow fadeInLeft">
+                        <p>C#</p>
+                    </div>
+                    <div class="col-lg-7 features-text wow fadeInLeft">
+                        <div class="progress progress-bar-default">
+                            <div style="width: 75%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="75"
+                                 role="progressbar" class="progress-bar">
+                                <span class="sr-only">75% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 col-lg-offset-2 features-text wow fadeInLeft">
+                        <p>Linux/Shell</p>
+                    </div>
+                    <div class="col-lg-7 features-text wow fadeInLeft">
+                        <div class="progress progress-bar-default">
+                            <div style="width: 70%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="70"
+                                 role="progressbar" class="progress-bar">
+                                <span class="sr-only">70% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 col-lg-offset-2 features-text wow fadeInLeft">
+                        <p>Java</p>
+                    </div>
+                    <div class="col-lg-7 features-text wow fadeInLeft">
+                        <div class="progress progress-bar-default">
+                            <div style="width: 70%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="70"
+                                 role="progressbar" class="progress-bar">
+                                <span class="sr-only">70% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+    </section>
+
+    <section id="projects" class="project gray-section features">
+        <div class="container" id="i18_projects">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1><span data-i18n="projects.my_projects">My Projects</span></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 wow fadeInLeft">
+                    <div class="team-member">
+                        <a href="{{ site.project.gonramp.url }}" target="_blank">
+                            <img src="{{ site.project.gonramp.img | prepend: site.baseurl }}"
+                                 class="img-responsive img-circle img-small" alt="">
+                            <h4><span class="navy">{{ site.project.gonramp.name }}</span></h4>
+                        </a>
+                        <p><span data-i18n="projects.gonramp"></span>
+                        </p>
+                        <ul class="list-inline social-icon">
+                            <li>
+                                <a href="{{ site.project.gonramp.url }}"
+                                   target="blank">
+                                    <i class="fa fa-globe"></i></a>
+                            </li>
+                            <li>
+                                <a href="{{ site.project.gonramp.github }}"
+                                   target="blank">
+                                    <i class="fa fa-github"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 wow">
+                    <div class="team-member">
+                        <img src="{{ site.project.jscoverageqc.img | prepend: site.baseurl }}"
+                             class="img-responsive img-circle img-small" alt="">
+                        <h4><span class="navy">{{ site.project.jscoverageqc.name }}</span></h4>
+                        <p><span data-i18n="projects.jscoverageqc"></span>
+                        </p>
+                        <ul class="list-inline social-icon">
+                            <li>
+                                <a href="{{ site.project.jscoverageqc.url }}"
+                                   target="blank">
+                                    <i class="fa fa-globe"></i></a>
+                            </li>
+                            <li>
+                                <a href="{{ site.project.jscoverageqc.github }}"
+                                   target="blank">
+                                    <i class="fa fa-github"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-sm-4 wow fadeInRight">
+                    <div class="team-member">
+                        <img src="{{ site.project.pousse_de_bambin.img | prepend: site.baseurl }}"
+                             class="img-responsive img-circle img-small" alt="">
+                        <h4><span class="navy">{{ site.project.pousse_de_bambin.name }}</span></h4>
+                        <p><span data-i18n="projects.pousse_de_bambin"></span>
+                        </p>
+                        <ul class="list-inline social-icon">
+                            <li>
+                                <a href="{{ site.project.pousse_de_bambin.url }}"
+                                   target="blank">
+                                    <i class="fa fa-globe"></i></a>
+                            </li>
+                            <li>
+                                <a href="{{ site.project.pousse_de_bambin.github }}"
+                                   target="blank">
+                                    <i class="fa fa-github"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+    </section>
+
+    <!--
+    <section id="hobbies" class="navy-section testimonials" style="margin-top: 0">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center wow zoomIn" id="i18_hobbies">
+                    Hobbies
+                </div>
+            </div>
+        </div>
+
+    </section>
+    -->
+
+    <section id="links" class="contact features">
+        <div class="container" id="i18_links">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1><span data-i18n="contact.contact_me">Social Link</span></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <div class="team-member wow zoomIn">
+                        <img src="{{ site.nikki_phoolchund.head_img | prepend: site.baseurl }}" height="110" width="110"
+                             class="img-responsive img-circle" alt="">
+                        <h4><span class="navy">{{ site.nikki_phoolchund.last_name }}</span> {{
+                            site.nikki_phoolchund.first_name }}</h4>
+                        <p>
+                            {{ site.nikki_phoolchund.description }}
+                        </p>
+                        <ul class="list-inline social-icon">
+                            <li><a href="{{ site.nikki_phoolchund.linkedin }}" target="blank"><i
+                                    class="fa fa-linkedin"></i></a>
+                            </li>
+                            <li><a href="mailto:{{ site.nikki_phoolchund.email }}"><i class="fa fa-envelope-o"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                    <p><strong>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('body').scrollspy({
+                target: '.navbar-fixed-top',
+                offset: 80
+            });
+
+            // Page scrolling feature
+            $('a.page-scroll').bind('click', function (event) {
+                var link = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $(link.attr('href')).offset().top - 50
+                }, 500);
+                event.preventDefault();
+                $("#navbar").collapse('hide');
+            });
+        });
+
+        var cbpAnimatedHeader = (function () {
+            var docElem = document.documentElement,
+                    header = document.querySelector('.navbar-default'),
+                    didScroll = false,
+                    changeHeaderOn = 200;
+
+            function init() {
+                window.addEventListener('scroll', function (event) {
+                    if (!didScroll) {
+                        didScroll = true;
+                        setTimeout(scrollPage, 250);
+                    }
+                }, false);
+            }
+
+            function scrollPage() {
+                var sy = scrollY();
+                if (sy >= changeHeaderOn) {
+                    $(header).addClass('navbar-scroll')
+                }
+                else {
+                    $(header).removeClass('navbar-scroll')
+                }
+                didScroll = false;
+            }
+
+            function scrollY() {
+                return window.pageYOffset || docElem.scrollTop;
+            }
+
+            init();
+
+        })();
+
+        // Activate WOW.js plugin for animation on scrol
+        new WOW().init();
+
+    </script>
+
+    <script>
+
+        $(document).ready(function () {
+            function refresh_lang() {
+                $('.i18container').i18n();
+                $('#i18_navbar').i18n();
+                $('#i18_about_me').i18n();
+                $('#i18_skills').i18n();
+                $('#i18_projects').i18n();
+                $('#i18_career').i18n();
+                $('#i18_hobbies').i18n();
+                $('#i18_links').i18n();
+            }
+
+            $.i18n.init({
+                resGetPath: 'static/locales/__lng__.json',
+                load: 'unspecific',
+                fallbackLng: false,
+                lng: 'en'
+            }, function (t) {
+                refresh_lang();
+            });
+
+            $('.set_en').on('click', function () {
+                i18n.setLng('en', function () {
+                    refresh_lang();
+                });
+            });
+
+            $('.set_fr').on('click', function () {
+                i18n.setLng('fr', function () {
+                    refresh_lang();
+                });
+            });
+
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#under_construction').popover('show');
+
+            $('#under_construction').on('hidden.bs.popover', function () {
+                $('#under_construction').popover('destroy');
+            });
+        });
+    </script>
